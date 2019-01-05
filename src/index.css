@@ -25,6 +25,7 @@ a {
 
 .nav {
   text-align: center;
+  border-bottom: 2px solid green;
 }
 
 .nav ul {
@@ -46,4 +47,46 @@ li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
+}
+
+.login-form button {
+  display: block;
+}
+
+.question-author {
+  text-align: left;
+  padding: 1%;
+  font-weight: bold;
+}
+
+.questions-column {
+  float: left;
+  width: 36%;
+  padding: 2%;
+}
+
+.home-container-row:after {
+  content: "";
+  display: table;
+  clear: both;
+  text-align: center;
+}
+
+.column {
+  float: left;
+  display: table-cell;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.left {
+  width: 30%;
+}
+
+.right {
+  width: 70%;
 }

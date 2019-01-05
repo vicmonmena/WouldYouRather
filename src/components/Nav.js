@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 class Nav extends Component {
 
   render() {
-
+    const { authedUser } = this.props
     return (
       <nav className='nav'>
         <ul>
@@ -23,19 +24,21 @@ class Nav extends Component {
               Leader Board
             </NavLink>
           </li>
-          { this.props.loggedIn !== undefined &&
-            <li>
-              <div>
-                Hello, {this.props.loggedIn}
-              </div>
-            </li>
+          { authedUser === undefined
+            ? null
+            : <li>
+                <div>
+                  Hello, {authedUser.name}
+                </div>
+              </li>
           }
-          { this.props.loggedIn !== undefined &&
-            <li>
-              <NavLink to='/' activeClassName='active'>
-                Logout
-              </NavLink>
-            </li>
+          { authedUser === undefined 
+            ? null 
+            : <li>
+                <NavLink to='/' activeClassName='active'>
+                  Logout
+                </NavLink>
+              </li>
           }
         </ul>
       </nav>
@@ -43,4 +46,6 @@ class Nav extends Component {
   }
 } 
 
-export default Nav
+const mapStateToProps = ({ authedUser }) => ({ authedUser })
+
+export default connect(mapStateToProps)(Nav)

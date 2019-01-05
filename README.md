@@ -23,7 +23,9 @@ Step 8 - Add finishing touches and make sure the project meets the rubric.
 
 ## Notes about some of this project folders and files
 
-[`_DATA.js`](src/utils/_DATA.js) file contains data structures (users and questions) this project is based on
+- [`_DATA.js`](src/utils/_DATA.js) file contains data structures (users and questions) this project is based on.
+
+- [`api.js`](src/utils/api.js) file represents the layer over _DATA file. Functions defined here must be invoked from actions and everything it is needed from _DATA only should be obtained or sent through this functions.
 
 ## Contact
 
