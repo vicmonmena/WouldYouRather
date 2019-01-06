@@ -26,7 +26,9 @@ class Home extends Component {
             {
               answeredQuestions.map((quest) => (
                 <div key={quest.id}>
-                  <Question question={quest} author={users.find((u) => (u.id === quest.author))}/>
+                  <Question 
+                    question={quest} 
+                    author={users.find((u) => (u.id === quest.author))}/>
                 </div>
               ))
             }

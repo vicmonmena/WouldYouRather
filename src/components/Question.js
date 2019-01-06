@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class Question extends Component {
+
+  toParent = (event, id) => {
+    event.preventDefault()
+    this.props.history.push(`/question/${id}`)
+  }
+
   render() {
+
     const { question, author } = this.props
     return (
       <div key={question.id}>
@@ -9,12 +18,18 @@ class Question extends Component {
         <div>
           <div className='row'>
             <div className='column left'>
-              Picture
+              <img
+                src={author.avatarURL}
+                alt={`Avatar of ${author.name}`}
+                className='avatar'
+              />
             </div>
             <div className='column right'>
-              <p>Would you rather</p>
+              <p className='wyr'>Would you rather</p>
               <p>{question.optionOne.text}</p>
-              <button>View Poll</button>
+              <button className='btn' onClick={(e) => this.toParent(e, question.id)}>
+                View Poll
+              </button>
             </div>
           </div>
         </div>
@@ -23,4 +38,4 @@ class Question extends Component {
   }
 }
 
-export default Question
+export default withRouter(connect()(Question))
