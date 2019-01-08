@@ -6,9 +6,10 @@ export const SET_AUTHED_USER = 'SET_AUTHED_USER';
  * @export
  * @returns
  */
-export function setAuthedUser(id) {
+export function setAuthedUser(user) {
+  console.log('setAuthedUser: ', user)
   return {
     type: SET_AUTHED_USER,
-    authedUser: id,
+    authedUser: user,
   }
 }

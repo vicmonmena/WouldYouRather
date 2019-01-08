@@ -34,7 +34,7 @@ class Result extends Component {
                     value='optionTwo'
                     onChange={this.handleOptionChange}
                     checked={this.state.selectedOption === 'optionTwo'} />
-                  {question.optionTwo.text}
+                    {question.optionTwo.text}
                 </label>
               </div>
               <button className='btn row'>View Poll</button>
@@ -44,6 +44,16 @@ class Result extends Component {
       </div>
     )
   }
+}
+
+const mapStateToProps = ({ users, questions }, props) => {
+  const { id } = props.match.params
+  return(
+    {
+      question: Object.values(questions).find((q) => (q.id === id)),
+      author: Object.values(users).find((u) => (u.questions.indexOf(id) !== -1))
+    }
+  )
 }
 
 export default connect()(Result)

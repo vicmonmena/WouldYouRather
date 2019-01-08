@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 class Question extends Component {
 
-  toParent = (event, id) => {
+  toPoll = (event, id) => {
     event.preventDefault()
     this.props.history.push(`/question/${id}`)
   }
@@ -27,7 +27,7 @@ class Question extends Component {
             <div className='column right'>
               <p className='wyr'>Would you rather</p>
               <p>{question.optionOne.text}</p>
-              <button className='btn' onClick={(e) => this.toParent(e, question.id)}>
+              <button className='btn' onClick={(e) => this.toPoll(e, question.id)}>
                 View Poll
               </button>
             </div>

@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount() {
     // Load users list
     this.props.dispatch(handleInitialData())
-    this.props.dispatch(handleReceiveQuestions())
+    // this.props.dispatch(handleReceiveQuestions())
   }
 
   render() {
@@ -32,7 +32,8 @@ class App extends Component {
             { loading === true 
               ? null
               : <div>
-                  <Route path='/' exact component={Home} />
+                  <Route path='/' exact component={Login} />
+                  <Route path='/home' exact component={Home} />
                   <Route path='/question/:id' exact component={Poll} />
                 </div>
             }

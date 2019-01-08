@@ -7,13 +7,16 @@ class Login extends Component {
 
   state = {
     toHome: false,
+    selectedUser: null,
+    test: false,
   }
 
   handleChange = (event) => {
-    this.setState({
-      selectedUser: event.target.value
-    });
-    console.log('onChange: ', event.target.value)
+    const sUser = event.target.value;
+    console.log('prev::onChange: ', sUser)
+    this.setState(() => ({
+      selectedUser: sUser,
+    }));
     console.log('handleChange::selectedUser: ', this.state.selectedUser)
   }
 
@@ -33,6 +36,8 @@ class Login extends Component {
 
   render() {
     const { users } = this.props
+    console.log('render::selectedUser: ', this.state.selectedUser)
+
     
     if (this.state.toHome === true) {
       return <Redirect to='/home' />

@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import { handleReceiveQuestions } from '../actions/questions';
 
 class Home extends Component {
 
+  
   render() {
-    const { unAnsweredQuestions, answeredQuestions, users } = this.props
+    const { unAnsweredQuestions, answeredQuestions, users, authedUser } = this.props
+    
+    console.log('home::render::authedUser: ', authedUser)
+    
+    if (!(authedUser)) return (<div>Loading...</div>)
     return(
       <div className='home-container-row'>
         <div className='questions-column'>
@@ -39,10 +45,17 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ questions, users }) => ({
-  unAnsweredQuestions: Object.values(questions),
-  answeredQuestions: Object.values(questions),
-  users: Object.values(users)
-})
+const mapStateToProps = ({ questions, users, authedUser }) => {
+  console.log('HOME')
+  console.log('home::mapStateToProps::authedUser: ', authedUser)
+return(
+    {
+      unAnsweredQuestions: Object.values(questions),
+      answeredQuestions: Object.values(questions),
+      users: Object.values(users),
+      authedUser: authedUser
+    }
+  )
+}
 
 export default connect(mapStateToProps)(Home)
