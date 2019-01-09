@@ -2,19 +2,22 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { handleLogoutUser } from './../actions/shared'
+import { withRouter } from 'react-router-dom'
 class Nav extends Component {
 
   handleLogout = (event) => {
     event.preventDefault()
     this.props.dispatch(handleLogoutUser())
+    this.props.history.push("/Login");
   }
 
   render() {
+    const { authedUser } = this.props 
     return (
       <nav className='nav'>
         <ul>
           <li>
-            <NavLink to='/home' exact activeClassName='active'>
+            <NavLink to='/' exact activeClassName='active'>
               Home
             </NavLink>
           </li>
@@ -39,9 +42,9 @@ class Nav extends Component {
           { !(authedUser)
             ? null 
             : <li>
-                <NavLink to='/' activeClassName='active'>
+                <button onClick={this.handleLogout}>
                   Logout
-                </NavLink>
+                </button>
               </li>
           }
         </ul>
@@ -56,4 +59,4 @@ const mapStateToProps = ({ authedUser }) => (
   }
 )
 
-export default connect(mapStateToProps)(Nav)
+export default withRouter(connect(mapStateToProps)(Nav))

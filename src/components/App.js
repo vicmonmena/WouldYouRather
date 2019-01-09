@@ -32,8 +32,8 @@ class App extends Component {
             { loading === true 
               ? null
               : <div>
-                  <Route path='/' exact component={Login} />
-                  <Route path='/home' exact component={Home} />
+                  <Route path='/Login' exact component={Login} />
+                  <Route path='/' exact component={Home} />
                   <Route path='/question/:id' exact component={Poll} />
                 </div>
             }

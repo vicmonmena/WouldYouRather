@@ -10,7 +10,8 @@ class Home extends Component {
     const { unAnsweredQuestions, answeredQuestions, users, authedUser } = this.props
     
     console.log('home::render::authedUser: ', authedUser)
-    
+    // TODO: Whenever the user types something in the address bar, the user is asked to log in before the requested page is shown.
+
     if (!(authedUser)) return (<div>Loading...</div>)
     return(
       <div className='home-container-row'>
@@ -50,8 +51,14 @@ const mapStateToProps = ({ questions, users, authedUser }) => {
   console.log('home::mapStateToProps::authedUser: ', authedUser)
 return(
     {
-      unAnsweredQuestions: Object.values(questions),
-      answeredQuestions: Object.values(questions),
+      unAnsweredQuestions: Object.values(questions).filter((question) => (
+        question.optionOne.votes.indexOf(authedUser.id) === -1 &&
+        question.optionTwo.votes.indexOf(authedUser.id) === -1
+      )),
+      answeredQuestions: Object.values(questions).filter((question) => (
+        question.optionOne.votes.indexOf(authedUser.id) !== -1 ||
+        question.optionTwo.votes.indexOf(authedUser.id) !== -1
+      )),
       users: Object.values(users),
       authedUser: authedUser
     }
