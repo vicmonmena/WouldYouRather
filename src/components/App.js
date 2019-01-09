@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
-import { handleReceiveQuestions } from '../actions/questions'
 import Nav from './Nav'
 import Poll from './Poll'
 import Login from './Login'
 import Home from './Home'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
+import PageNotFound from './PageNotFound'
 import './App.css';
 
 class App extends Component {
@@ -17,25 +17,31 @@ class App extends Component {
   componentDidMount() {
     // Load users list
     this.props.dispatch(handleInitialData())
-    // this.props.dispatch(handleReceiveQuestions())
   }
 
   render() {
-    const { loading } = this.props
+    const { loading, authedUser } = this.props
     return (
       <Router>
         <Fragment>
-          <LoadingBar />
+          <LoadingBar className="loading"/>
           <div className='App'>
-            <div className='title'>React app</div>
             <Nav />
             { loading === true 
               ? null
-              : <div>
-                  <Route path='/Login' exact component={Login} />
-                  <Route path='/' exact component={Home} />
-                  <Route path='/question/:id' exact component={Poll} />
-                </div>
+              : authedUser === ''
+                ? <Route path='/' exact component={Login} />
+                : loading === true 
+                  ? null
+                  : <div>
+                      <Switch>
+                        <Route path='/home' exact component={Home} />
+                        <Route path='/question/:id' component={Poll} />
+                        <Route path='newquestion' component={NewQuestion} />
+                        <Route path='leaderboard' component={LeaderBoard} />
+                        <Route component={PageNotFound} />
+                      </Switch>
+                    </div>
             }
           </div>
         </Fragment>
@@ -50,9 +56,10 @@ class App extends Component {
  * It requires to hook our component by using "connect".
  * @param {*} users
  */
-const mapStateToProps = ({ questions, users }) => {
+const mapStateToProps = ({ authedUser }) => {
   return {
-    loading: questions === null
+    authedUser,
+    loading: authedUser === null
   }
 }
 

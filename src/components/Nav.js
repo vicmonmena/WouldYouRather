@@ -8,7 +8,7 @@ class Nav extends Component {
   handleLogout = (event) => {
     event.preventDefault()
     this.props.dispatch(handleLogoutUser())
-    this.props.history.push("/Login");
+    this.props.history.push("/");
   }
 
   render() {
@@ -17,7 +17,7 @@ class Nav extends Component {
       <nav className='nav'>
         <ul>
           <li>
-            <NavLink to='/' exact activeClassName='active'>
+            <NavLink to='/home' exact activeClassName='active'>
               Home
             </NavLink>
           </li>

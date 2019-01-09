@@ -1,11 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
-import { handleReceiveQuestions } from '../actions/questions';
 
 class Home extends Component {
 
-  
+  componentDidMount() {
+    document.getElementById('defaultOpen').click()
+  }
+
+  componentWillUpdate() {
+    document.getElementById('defaultOpen').click()
+  }
+
+  handleClickTab = (event, question) => {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(question).style.display = "block";
+    event.currentTarget.className += " active";
+  }
   render() {
     const { unAnsweredQuestions, answeredQuestions, users, authedUser } = this.props
     
@@ -14,32 +33,30 @@ class Home extends Component {
 
     if (!(authedUser)) return (<div>Loading...</div>)
     return(
-      <div className='home-container-row'>
-        <div className='questions-column'>
-          <h3>Unanswered Questions</h3>
-          <div>
-            {
-              unAnsweredQuestions.map((quest) => (
-                <div key={quest.id}>
-                  <Question question={quest} author={users.find((u) => (u.id === quest.author))}/>
-                </div>
-              ))
-            }
-          </div>
+      <div className='home-container'>
+        <div className='tab'>
+          <button id="defaultOpen" className='tablinks' onClick={(e) => this.handleClickTab(e, 'unanswered')}>Unanswered questions</button>
+          <button className='tablinks' onClick={(e) => this.handleClickTab(e, 'answered')}>Answered questions</button>
         </div>
-        <div className='questions-column'>
-          <h3>Answered Questions</h3>
-          <div>
-            {
-              answeredQuestions.map((quest) => (
-                <div key={quest.id}>
-                  <Question 
-                    question={quest} 
-                    author={users.find((u) => (u.id === quest.author))}/>
-                </div>
-              ))
-            }
-          </div>
+        <div id='unanswered' className='tabcontent'>
+          {
+            unAnsweredQuestions.map((quest) => (
+              <div key={quest.id}>
+                <Question question={quest} author={users.find((u) => (u.id === quest.author))}/>
+              </div>
+            ))
+          }
+        </div>
+        <div id='answered' className='tabcontent'>
+          {
+            answeredQuestions.map((quest) => (
+              <div key={quest.id}>
+                <Question 
+                  question={quest} 
+                  author={users.find((u) => (u.id === quest.author))}/>
+              </div>
+            ))
+          }
         </div>
       </div>
     )
@@ -49,7 +66,7 @@ class Home extends Component {
 const mapStateToProps = ({ questions, users, authedUser }) => {
   console.log('HOME')
   console.log('home::mapStateToProps::authedUser: ', authedUser)
-return(
+  return(
     {
       unAnsweredQuestions: Object.values(questions).filter((question) => (
         question.optionOne.votes.indexOf(authedUser.id) === -1 &&

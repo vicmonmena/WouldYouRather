@@ -11,6 +11,7 @@ export function handleInitialData() {
     return getUsers()
       .then((users) => {
         dispatch(receiveUsers(users))
+        dispatch(setAuthedUser(''))
         dispatch(hideLoading())
       })
   }
@@ -35,7 +36,9 @@ export function handleLogoutUser() {
   console.log('handleLogoutUser')
   return (dispatch) => {  
     dispatch(showLoading())
-    dispatch(setAuthedUser(null))
-    dispatch(hideLoading())
+    return new Promise(() => {
+      dispatch(setAuthedUser(''))
+      dispatch(hideLoading())
+    })
   }
 }
