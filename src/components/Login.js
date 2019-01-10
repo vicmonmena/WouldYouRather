@@ -46,22 +46,28 @@ class Login extends Component {
 
     return (
       <div className='login'>
-        <h3>Welcome to Would You Rather App!</h3>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>Please sign in to continue</p>
-        <form className='login-form' onSubmit={this.handleSubmit}>
-          <select id='user-select' onChange={this.handleChange} >
-            <option key='no-key' value='Select User' selected disabled >Select User</option>
-            { 
-              users.map((user) => (
-                <option key={user.id} value={user.id}>{user.name}</option>    
-              ))
-            }
-          </select>
-          <button type='submit'>
-              Sign in
-          </button>
-        </form>
+        <div><h3>Welcome to Would You Rather App!</h3></div>
+        <div><img src={logo} className='App-logo' alt='logo' /></div>
+        <div><p>Please sign in to continue</p></div>
+        <div>
+          <form className='login-form' onSubmit={this.handleSubmit}>
+            <div>
+              <select id='user-select' onChange={this.handleChange} >
+                <option key='no-key' value='Select User' selected disabled >Select User</option>
+                { 
+                  users.map((user) => (
+                    <option key={user.id} value={user.id}>{user.name}</option>    
+                  ))
+                }
+              </select>
+            </div>
+            <div>
+              <button type='submit'>
+                  Sign in
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

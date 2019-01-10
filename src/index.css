@@ -102,11 +102,8 @@ a {
 
 /* Login */
 .login {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-form {
+  text-align: center;
+  justify-content: center;
   display: flex;
   flex-direction: column;
 }
@@ -226,11 +223,13 @@ a {
   flex: 2 0 0;
   flex-direction: column;
   width: 100%;
+  background-color: lightgray;
 }
 
 .avatar {
   -webkit-flex: 1 0 0;
   flex: 1 0 0;
+  background-color: lightgray;
 }
 
 .avatar img{
@@ -238,6 +237,7 @@ a {
   border: 1px solid rgba(0,0,0,.29);
   border-radius: 50%;
   margin: 10px;
+  background-color: white;
 }
 
 .left {
