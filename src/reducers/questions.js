@@ -15,13 +15,9 @@ export default function questions (state = {}, action) {
         ...action.questions
       };
     case ADD_QUESTION :
-      const { question } = action
-
-      // TODO: ...
-
       return {
         ...state,
-        // TODO:...
+        [action.question.id]: action.question,
       }
     case ANSWER_QUESTION :
       return {

@@ -259,3 +259,41 @@ a {
   border-radius: 3px;
   cursor: pointer;
 }
+
+/* New Question*/
+.newpoll-container {
+  width: 100%;
+  max-width: 590px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top:10px; 
+  justify-content: center;
+}
+
+.newpoll-container p {
+  font-weight: bold;
+}
+
+.newpoll-container button {
+  width: 200px;
+  text-transform: uppercase;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,.29);
+  border-radius: 3px;
+  cursor: pointer;
+  background: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top:10px;
+}
+
+.newpoll-container input {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,.29);
+  border-radius: 3px;
+  background: #fff;
+  font-size: 12px;
+}

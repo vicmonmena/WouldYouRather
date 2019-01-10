@@ -62,9 +62,7 @@ class Login extends Component {
               </select>
             </div>
             <div>
-              <button type='submit'>
-                  Sign in
-              </button>
+              <button type='submit'>Sign in</button>
             </div>
           </form>
         </div>

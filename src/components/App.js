@@ -7,7 +7,7 @@ import Nav from './Nav'
 import Poll from './Poll'
 import Login from './Login'
 import Home from './Home'
-import NewQuestion from './NewQuestion'
+import NewPoll from './NewPoll'
 import LeaderBoard from './LeaderBoard'
 import PageNotFound from './PageNotFound'
 import './App.css';
@@ -37,8 +37,8 @@ class App extends Component {
                       <Switch>
                         <Route path='/home' exact component={Home} />
                         <Route path='/question/:id' component={Poll} />
-                        <Route path='newquestion' component={NewQuestion} />
-                        <Route path='leaderboard' component={LeaderBoard} />
+                        <Route path='/add' component={NewPoll} />
+                        <Route path='/leaderboard' component={LeaderBoard} />
                         <Route component={PageNotFound} />
                       </Switch>
                     </div>
