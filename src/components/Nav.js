@@ -17,25 +17,25 @@ class Nav extends Component {
       <nav className='nav'>
         <ul>
           <li>
-            <NavLink to='/home' exact activeClassName='active'>
+            <NavLink to='/home' className='navlink' activeClassName='active' >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to='/add' activeClassName='active'>
+            <NavLink to='/add' className='navlink' activeClassName='active' >
               New Question
             </NavLink>
           </li>
           <li>
-            <NavLink to='/leaderboard' activeClassName='active'>
+            <NavLink to='/leaderboard' className='navlink' activeClassName='active'>
               Leader Board
             </NavLink>
           </li>
           { !(authedUser)
             ? null
-            : <li>
+            : <li className='inactive'>
                 <div>
-                  Hello, {authedUser.name}
+                  Hello, <div className='username'>{authedUser.name}</div>
                 </div>
               </li>
           }

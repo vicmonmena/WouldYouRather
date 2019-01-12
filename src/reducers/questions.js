@@ -15,9 +15,11 @@ export default function questions (state = {}, action) {
         ...action.questions
       };
     case ADD_QUESTION :
+      const { question } = action;
+
       return {
         ...state,
-        [action.question.id]: action.question,
+        [action.question.id]: action.question
       }
     case ANSWER_QUESTION :
       return {

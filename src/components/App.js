@@ -4,13 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
 import Nav from './Nav'
-import Poll from './Poll'
 import Login from './Login'
 import Home from './Home'
 import NewPoll from './NewPoll'
+import Poll from './Poll'
 import LeaderBoard from './LeaderBoard'
 import PageNotFound from './PageNotFound'
-import './App.css';
 
 class App extends Component {
 

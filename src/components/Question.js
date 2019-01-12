@@ -22,8 +22,9 @@ class Question extends Component {
               alt={`Avatar of ${author.name}`}
             />
           </div>
+          <div className='horizontal-separator'></div>
           <div className='info'>
-            <p className='wyr'>Would you rather</p>
+            <p className='info-title'>Would you rather</p>
             <p>{question.optionOne.text}</p>
             <button className='btn' onClick={(e) => this.toPoll(e, question.id)}>
               View Poll

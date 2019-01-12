@@ -149,6 +149,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
 
 export function _saveQuestion (question) {
   return new Promise((res, rej) => {
+    console.log(question)
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question)
 
@@ -165,7 +166,7 @@ export function _saveQuestion (question) {
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
       }
-
+      console.log('New question created! ', formattedQuestion.id)
       res(formattedQuestion)
     }, 1000)
   })

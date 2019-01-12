@@ -44,40 +44,38 @@ class newpoll extends Component {
 
     return(
       <div className='newpoll-container'>
-        <div>
+        <div className='newpoll-title'>
           <h2>Create New Question</h2>
         </div>
-        <div>
+        <div className='newpoll-content'>
           <p>Complete the question:</p>
-        </div>
-        <div className='wyr'>
           <p>Would you rather...</p>
-        </div>
-        <div className='' onSubmit={this.handleSubmit}>
-          <form>
-            <div>
-              <input 
-                type='text'
-                name='optionOne'
-                placeholder='Enter Question One Text Here'
-                onChange={this.handleChange}
-              />
-            </div>
-            <div>
-              <p>OR</p>
-            </div>
-            <div>
-              <input 
-                type='text' 
-                name='optionTwo'
-                placeholder='Enter Question Two Text Here'
-                onChange={this.handleChange}
-              />
-            </div>
-            <div>
-              <button type='submit'>Submit</button>
-            </div>
-          </form>
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <input 
+                  type='text'
+                  name='optionOne'
+                  placeholder='Enter Question One Text Here'
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <p>OR</p>
+              </div>
+              <div>
+                <input 
+                  type='text' 
+                  name='optionTwo'
+                  placeholder='Enter Question Two Text Here'
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <button type='submit'>Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     )
