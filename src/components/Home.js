@@ -68,10 +68,12 @@ const mapStateToProps = ({ questions, users, authedUser }) => {
   return(
     {
       unAnsweredQuestions: Object.values(questions).filter((question) => (
-        Object.keys(authedUser.answers).indexOf(question.id) === -1
+        question.optionOne.votes.indexOf(authedUser.id) === -1 
+        && question.optionTwo.votes.indexOf(authedUser.id) === -1 
       )).sort((questA,questB) => questB.timestamp - questA.timestamp),
       answeredQuestions: Object.values(questions).filter((question) => (
-        Object.keys(authedUser.answers).indexOf(question.id) !== -1
+        question.optionOne.votes.indexOf(authedUser.id) !== -1 
+        || question.optionTwo.votes.indexOf(authedUser.id) !== -1 
       )).sort((questA,questB) => questB.timestamp - questA.timestamp),
       users: Object.values(users),
       authedUser: authedUser
