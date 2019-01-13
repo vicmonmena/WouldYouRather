@@ -2,9 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PollForm from './PollForm'
 import PollDetails from './PollDetails'
-
+import { handleQuestionAnswer } from '../actions/shared'
 
 class Poll extends Component {
+
+  handleSubmit = (questionId, selectedOption) => {
+    const { dispatch, } = this.props
+    console.log('questionId: ', questionId)
+    console.log('selectedOption: ', selectedOption)
+    
+    dispatch(handleQuestionAnswer(questionId, selectedOption))
+  }
 
   render() {
 
@@ -13,8 +21,8 @@ class Poll extends Component {
     const answered = 
       question.optionOne.votes.indexOf(authedUser.id) !== -1 
       || question.optionTwo.votes.indexOf(authedUser.id) !== -1 
-
-    console.log(this.props)
+    console.log('Poll::render::Checking if questions was answered: ', answered)
+    
     return (
       <div className='poll-container'>
       { answered === true
@@ -23,7 +31,9 @@ class Poll extends Component {
             author={author}/>
         : <PollForm 
             question={question} 
-            author={author} />
+            author={author} 
+            handleSubmit={this.handleSubmit}
+            />
       }
       </div>
     )
@@ -32,7 +42,6 @@ class Poll extends Component {
 
 const mapStateToProps = ({ users, questions, authedUser }, props) => {
   const { id } = props.match.params
-  console.log('Poll::mapStateToProps::author:')
   const question = Object.values(questions).find((q) => (q.id === id))
   return(
     {

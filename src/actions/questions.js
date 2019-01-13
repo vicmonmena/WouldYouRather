@@ -1,8 +1,8 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { saveQuestion, saveQuestionAnswer, getQuestions } from '../utils/api'
+import { saveQuestion, getQuestions } from '../utils/api'
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
-export const ANSWER_QUESTION = 'ANSWER_QUESTION';
+export const QUESTION_ANSWER = 'QUESTION_ANSWER';
 
 /**
  * This is an ACTION CREATOR
@@ -18,7 +18,6 @@ export function receiveQuestions(questions) {
 }
 
 export function handleReceiveQuestions() {
-  console.log('handleReceiveQuestions')
   return (dispatch) => {  
     dispatch(showLoading())
     return getQuestions()
@@ -32,10 +31,9 @@ export function handleReceiveQuestions() {
 /**
  * This is an ACTION CREATOR
  *
- * @export
  * @returns
  */
-export function addQuestion(question) {
+function addQuestion(question) {
   return {
     type: ADD_QUESTION,
     question,
@@ -69,38 +67,13 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
 /**
  * This is an ACTION CREATOR
  *
- * @export
  * @returns
  */
 export function answerQuestion({ authedUser, qid, answer }) {
   return {
-    type: ANSWER_QUESTION,
+    type: QUESTION_ANSWER,
     authedUser,
     qid,
     answer
-  }
-}
-
-/**
- * Asynchronous action creator
- * @param {string} qid 
- * @param {string} answer
- */
-export function handleAnswerQuestion(qid, answer) {
-  return (dispatch, getState) => {
-    const { authedUser } = getState()
-    dispatch(showLoading())
-    return saveQuestionAnswer( {
-      qid,
-      answer,
-      author: authedUser,
-    })
-      .then((answer) => dispatch(answerQuestion(answer)))
-      .then(() => dispatch(hideLoading()))
-      .catch((e) => {
-        console.warn('Error in handleAnswerQuestion: ', e)
-        // TODO: change alert by modal
-        alert('There wasn an error answering question. Try again.')
-      })
   }
 }

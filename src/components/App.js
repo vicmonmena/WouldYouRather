@@ -28,7 +28,7 @@ class App extends Component {
             <Nav />
             { loading === true 
               ? null
-              : authedUser === ''
+              : (authedUser === '' || authedUser === undefined)
                 ? <Route path='/' exact component={Login} />
                 : loading === true 
                   ? null

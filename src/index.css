@@ -379,6 +379,10 @@ a {
 
 /* Poll Details */
 
+.polldetails-info {
+  align-items: center;
+}
+
 .optionResults {
   display: flex;
   flex-direction: column;

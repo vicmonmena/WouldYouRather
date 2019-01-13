@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { handleAnswerQuestion } from '../actions/questions'
+import { connect } from 'react-redux';
 
 class PollForm extends Component {
 
@@ -15,14 +15,13 @@ class PollForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { dispatch, question } = this.props
-    
-    dispatch(handleAnswerQuestion(question.id, this.state.selectedOption))
+    const { question, handleSubmit } = this.props
+    handleSubmit(question.id, this.state.selectedOption)
   }
 
   render() {
 
-    const { question, author, handleSubmit } = this.props
+    const { question, author } = this.props
     const { selectedOption } = this.state
     return (
       <div className='pollform-container'>
@@ -37,7 +36,7 @@ class PollForm extends Component {
           <div className='horizontal-separator'></div>
           <div className='info'>
             <p className='info-title'>Would you rather</p>
-            <form className='poll-form' onSubmit={handleSubmit}>
+            <form className='poll-form' onSubmit={this.handleSubmit}>
               <div className='poll-input'>
                 <input 
                   type='radio' 
@@ -45,7 +44,7 @@ class PollForm extends Component {
                   name='optionOne'
                   onChange={this.handleOptionChange}
                   checked={selectedOption === 'optionOne'} />
-                <label for='optionOne'>{question.optionOne.text}</label>
+                <label htmlFor='optionOne'>{question.optionOne.text}</label>
               </div>
               <div className='poll-input'>
                 <input 
@@ -54,7 +53,7 @@ class PollForm extends Component {
                   name='optionTwo'
                   onChange={this.handleOptionChange}
                   checked={selectedOption === 'optionTwo'} />
-                <label>{question.optionTwo.text}</label>
+                <label htmlFor='optionTwo' >{question.optionTwo.text}</label>
               </div>
                 <button className='btn poll-button'>View Poll</button>
             </form>
@@ -68,4 +67,4 @@ class PollForm extends Component {
 
 // TODO: PropTypes
 
-export default PollForm
+export default connect()(PollForm)
