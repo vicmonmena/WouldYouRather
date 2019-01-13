@@ -28,7 +28,7 @@ class PollDetails extends Component {
     return (
       <div className='polldetails-container'>
         <div className='poll-title'>Asked by {author.name}</div>
-        <div className='poll-info polldetails-info'>
+        <div className='polldetails-info'>
           <div className='avatar'>
             <img
               src={author.avatarURL}

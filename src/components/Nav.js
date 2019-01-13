@@ -16,39 +16,42 @@ class Nav extends Component {
     const { authedUser } = this.props 
     return (
       <nav className='nav'>
-        <ul>
-          <li>
-            <NavLink to='/home' className='navlink' activeClassName='active' >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/add' className='navlink' activeClassName='active' >
-              New Question
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/leaderboard' className='navlink' activeClassName='active'>
-              Leader Board
-            </NavLink>
-          </li>
-          { !(authedUser)
-            ? null
-            : <li className='inactive'>
-                <div>
-                  Hello, <div className='username'>{authedUser.name}</div>
-                </div>
-              </li>
-          }
-          { !(authedUser)
-            ? null 
-            : <li>
-                <button onClick={this.handleLogout}>
-                  Logout
-                </button>
-              </li>
-          }
-        </ul>
+        <div className='nav-item'>
+          <NavLink to='/home' className='navlink' activeClassName='active' >
+            Home
+          </NavLink>
+        </div>    
+        <div className='nav-item'>
+          <NavLink to='/add' className='navlink' activeClassName='active' >
+            New Question
+          </NavLink>
+        </div>
+        <div className='nav-item'>
+          <NavLink to='/leaderboard' className='navlink' activeClassName='active'>
+            Leader Board
+          </NavLink>
+        </div>
+        { !(authedUser)
+          ? null
+          : <div className='nav-item inactive'>
+              <div>Hello,</div>
+              <div className='username'>{authedUser.name}</div>
+              <div className='navatar'>
+                <img 
+                  src={authedUser.avatarURL}
+                  alt={`Avatar of ${authedUser.name}`}
+                />
+              </div>
+            </div>
+        }
+        { !(authedUser)
+          ? null 
+          : <div className='nav-item'>
+              <button onClick={this.handleLogout}>
+                Logout
+              </button>
+            </div>
+        }
       </nav>
     )
   }
