@@ -23,9 +23,9 @@ class LeaderBoard extends Component {
     return(
       <div className='leaderboard-container'>
       {
-        items.map(item => (
+        items.map((item, index) => (
           <div key={item.id}>
-            <CardBoard info={item} />
+            <CardBoard info={item} position={index+1}/>
           </div>
         ))
       }
