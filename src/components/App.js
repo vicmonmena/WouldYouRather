@@ -13,7 +13,9 @@ import PageNotFound from './PageNotFound'
 
 class App extends Component {
 
+  componentD
   componentDidMount() {
+    console.log('App::componentDidMount')
     // Load users list
     this.props.dispatch(handleInitialData())
   }

@@ -453,3 +453,67 @@ a {
   padding: 5px;
   font-weight: bold;
 }
+
+/* Leaderboard */
+
+.leaderboard-container {
+  width: 100%;
+  max-width: 590px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top:10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.h-separator {
+  width: 2px;
+  background-color: #ddd;
+  border: 10px solid white;
+  height: auto; 
+}
+
+.cardboard-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  border: 1px solid rgba(0,0,0,.29);
+  border-radius: 3px; 
+}
+
+.cardboard-avatar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.cardboard-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+
+.cardboard-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+  width: 100%;
+  padding: 5px;
+  
+  font-weight: bold;
+}
+
+.cardboard-score div {
+  border: 1px solid rgba(0,0,0,.29);
+  border-radius: 3px;
+}
+
+.cardboard-score h3 {
+  background-color: #ddd;
+  height: 100%; 
+}
