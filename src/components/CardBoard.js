@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import trophy_1 from '../trophy_yellow.png'
 import trophy_2 from '../trophy_green.png'
 import trophy_3 from '../trophy_purple.png'
 
 class CardBoard extends Component {
+
+  static propTypes = {
+    info: PropTypes.object.isRequired,
+    position: PropTypes.number.isRequired,
+  }
 
   render() {
     const { info, position } = this.props
@@ -51,7 +57,5 @@ class CardBoard extends Component {
     )
   }
 }
-
-// TODO: PropTypes
 
 export default CardBoard

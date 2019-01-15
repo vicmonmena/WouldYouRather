@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ProgressBar from './ProgressBar'
 
 class PollDetails extends Component {
+
+  static propTypes = {
+    question: PropTypes.object.isRequired,
+    author: PropTypes.object.isRequired,
+  }
 
   render() {
 
@@ -60,7 +66,5 @@ class PollDetails extends Component {
     )
   }
 }
-
-// TODO: PropTypes
 
 export default PollDetails

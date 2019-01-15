@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const ProgressBar = (props) => {
   const { percentage } = props
@@ -13,6 +14,8 @@ const ProgressBar = (props) => {
   )
 }
 
-// TODO: PropTypes
+ProgressBar.propTypes = {
+  percentage: PropTypes.number
+}
 
 export default ProgressBar

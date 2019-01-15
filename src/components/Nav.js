@@ -12,7 +12,6 @@ class Nav extends Component {
   }
 
   render() {
-    // TODO: show avatar close to the name
     const { authedUser } = this.props 
     return (
       <nav className='nav'>

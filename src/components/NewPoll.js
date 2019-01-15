@@ -25,8 +25,8 @@ class newpoll extends Component {
     event.preventDefault()
 
     if (this.state.optionOne === '' || this.state.optionTwo === '') {
+      // TODO: change alert by modal 
       alert('Please, enter both questions text')
-      // TODO: show a modal 
     } else {
       this.props.dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo))
       this.setState({

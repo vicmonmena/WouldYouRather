@@ -1,25 +1,26 @@
 ## About this project
 
-Would You Rather foll
+Would You Rather 
 
 [Rubic requirements](https://review.udacity.com/#!/rubrics/1567/view)
 
-## Coding Stage
-Step 1 - Design the shape of the state and create reducers.
+## Installing and launching
 
-Step 2 - Create a Redux store. Connect logger middleware (optional) and Redux Thunk middleware (alternatively, you can use Redux Saga, etc.).
+####  First, install project dependencies:
 
-Step 3 - For each view that needs access to the store, create the component and connect it to the store.
+```
+npm install
+```
 
-Step 4 - For the component you created in the last step, create actions and action creators. Check that everything works correctly.
+#### For launching
 
-Step 5 - Repeat Step 3 & Step 4 for each component that needs access to the store.
-
-Step 6 - Create presentational components and confirm that everything works correctly.
-
-Step 7 - Add React Router.
-
-Step 8 - Add finishing touches and make sure the project meets the rubric.
+```
+npm start
+````
+##### OR
+```
+yarn start
+````
 
 ## Notes about some of this project folders and files
 

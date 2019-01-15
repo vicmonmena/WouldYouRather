@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 
 class PollForm extends Component {
+
+  static propTypes = {
+    question: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired
+  }
 
   state = {
     selectedOption: 'optionOne'
@@ -64,7 +70,5 @@ class PollForm extends Component {
     )
   }
 }
-
-// TODO: PropTypes
 
 export default connect()(PollForm)

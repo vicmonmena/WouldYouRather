@@ -27,7 +27,7 @@ class Login extends Component {
     console.log('handleSubmit::selectedUser: ', this.state.selectedUser)
     if (this.state.selectedUser === undefined || this.state.selectedUser === null) {
       alert('Please, select an user!')
-      // TODO: show a modal
+      // TODO: change alert by modal
     } else {
       this.setState({
         toHome: true

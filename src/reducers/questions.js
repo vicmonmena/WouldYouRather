@@ -21,7 +21,6 @@ export default function questions (state = {}, action) {
         [action.question.id]: action.question
       }
     case QUESTION_ANSWER :
-      // TODO: add object {question: answer} to authedUser.answer -> Is it needed? -> If you go HOME this questions is kept in Unanswered questions
       console.log('REDUCER::QUESTION_ANSWER::questions::state: ', state)
       const { authedUser, qid, answer } = action
       console.log('REDUCER::QUESTION_ANSWER::questions::action: ', action)
