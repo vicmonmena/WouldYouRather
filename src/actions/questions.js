@@ -1,5 +1,5 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { saveQuestion, getQuestions } from '../utils/api'
+import { getQuestions, saveQuestion } from '../utils/api'
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const QUESTION_ANSWER = 'QUESTION_ANSWER';
@@ -33,7 +33,7 @@ export function handleReceiveQuestions() {
  *
  * @returns
  */
-function addQuestion(question) {
+export function addQuestion(question) {
   return {
     type: ADD_QUESTION,
     question,

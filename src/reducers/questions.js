@@ -15,7 +15,6 @@ export default function questions (state = {}, action) {
         ...action.questions
       };
     case ADD_QUESTION :
-      // TODO: concat question id to authedUser.questions array -> Is it needed?
       return {
         ...state,
         [action.question.id]: action.question
