@@ -1,5 +1,5 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { getQuestions, saveQuestion } from '../utils/api'
+import { getQuestions, saveQuestion, saveQuestionAnswer } from '../utils/api'
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const QUESTION_ANSWER = 'QUESTION_ANSWER';
@@ -69,11 +69,36 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
  *
  * @returns
  */
-export function answerQuestion({ authedUser, qid, answer }) {
+function answerQuestion({ authedUser, qid, answer }) {
   return {
     type: QUESTION_ANSWER,
     authedUser,
     qid,
     answer
+  }
+}
+
+/**
+ * Asynchronous action creator
+ * @param {string} qid 
+ * @param {string} answer
+ */
+export function handleQuestionAnswer(qid, answer) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+    dispatch(showLoading())
+    const info = {
+      authedUser: authedUser.id,
+      qid,
+      answer,
+    }
+    return saveQuestionAnswer(info)
+      .then(() => dispatch(answerQuestion(info)))
+      .then(() => dispatch(hideLoading()))
+      .catch((e) => {
+        console.warn('Error in handleQuestionAnswer: ', e)
+        // TODO: change alert by modal
+        alert('There wasn an error answering question. Try again.')
+      })
   }
 }

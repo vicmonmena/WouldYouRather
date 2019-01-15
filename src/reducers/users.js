@@ -5,7 +5,7 @@
  * If you need a refresher on the spread operator, check out this ES6 lesson.
  */
 
-import { RECEIVE_USERS, ADD_QUESTION, ADD_ANSWER } from '../actions/users';
+import { RECEIVE_USERS, ADD_QUESTION, QUESTION_ANSWER } from '../actions/users';
 
 export default function users (state = {}, action) {
   switch (action.type) {
@@ -26,7 +26,7 @@ export default function users (state = {}, action) {
         }
       }
     }
-    case ADD_ANSWER :
+    case QUESTION_ANSWER :
       const { authedUser, qid, answer } = action
       // Updating state: authedUser and user/authedUser in users array
       const response = {

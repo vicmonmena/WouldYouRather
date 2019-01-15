@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PollForm from './PollForm'
 import PollDetails from './PollDetails'
-import { handleQuestionAnswer } from '../actions/shared'
+import { handleQuestionAnswer } from '../actions/questions'
 
 class Poll extends Component {
 
