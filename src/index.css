@@ -94,7 +94,7 @@ a {
 }
 
 .info-title {
-  font-weight: bold
+  font-weight: bold;
 }
 
 .btn {
@@ -370,6 +370,8 @@ a {
   background-color: #ddd;
   border: 1px solid rgba(0,0,0,.29);
   border-top: none;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .poll-info h1 {
@@ -382,14 +384,16 @@ a {
   margin-left: 10px;
 }
 
-.pollform-form {
+.poll-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 5px;
+  align-items: stretch;
+  text-align: left;
 }
 
-.pollform-button .pollform-input {
+.poll-button, .poll-input {
   padding: 5px;
 }
 

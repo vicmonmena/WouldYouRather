@@ -49,7 +49,7 @@ class newpoll extends Component {
         </div>
         <div className='newpoll-content'>
           <p>Complete the question:</p>
-          <p>Would you rather...</p>
+          <h2>Would you rather...</h2>
           <div>
             <form onSubmit={this.handleSubmit}>
               <div>

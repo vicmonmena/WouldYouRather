@@ -41,7 +41,7 @@ class PollForm extends Component {
           </div>
           <div className='horizontal-separator'></div>
           <div className='info'>
-            <p className='info-title'>Would you rather</p>
+            <h2 className='info-title'>Would you rather...</h2>
             <form className='poll-form' onSubmit={this.handleSubmit}>
               <div className='poll-input'>
                 <input 
@@ -61,9 +61,10 @@ class PollForm extends Component {
                   checked={selectedOption === 'optionTwo'} />
                 <label htmlFor='optionTwo' >{question.optionTwo.text}</label>
               </div>
+              <div>
                 <button className='btn poll-button'>View Poll</button>
+              </div>
             </form>
-            
           </div>
         </div>
       </div>
