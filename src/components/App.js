@@ -13,7 +13,6 @@ import PageNotFound from './PageNotFound'
 
 class App extends Component {
 
-  componentD
   componentDidMount() {
     console.log('App::componentDidMount')
     // Load users list
@@ -30,7 +29,7 @@ class App extends Component {
             <Nav />
             { loading === true 
               ? null
-              : (authedUser === '' || authedUser === undefined)
+              : authedUser === ''
                 ? <Route path='/' exact component={Login} />
                 : loading === true 
                   ? null
@@ -38,8 +37,8 @@ class App extends Component {
                       <Switch>
                         <Route path='/home' exact component={Home} />
                         <Route path='/question/:id' component={Poll} />
-                        <Route path='/add' component={NewPoll} />
-                        <Route path='/leaderboard' component={LeaderBoard} />
+                        <Route path='/add' exact component={NewPoll} />
+                        <Route path='/leaderboard' exact component={LeaderBoard} />
                         <Route component={PageNotFound} />
                       </Switch>
                     </div>

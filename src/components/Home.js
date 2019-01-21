@@ -76,7 +76,8 @@ const mapStateToProps = ({ questions, users, authedUser }) => {
         || question.optionTwo.votes.indexOf(authedUser.id) !== -1 
       )).sort((questA,questB) => questB.timestamp - questA.timestamp),
       users: Object.values(users),
-      authedUser: authedUser
+      authedUser: authedUser,
+      loading: authedUser === null
     }
   )
 }
