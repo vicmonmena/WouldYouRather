@@ -20,9 +20,7 @@ export default function questions (state = {}, action) {
         [action.question.id]: action.question
       }
     case QUESTION_ANSWER :
-      console.log('REDUCER::QUESTION_ANSWER::questions::state: ', state)
       const { authedUser, qid, answer } = action
-      console.log('REDUCER::QUESTION_ANSWER::questions::action: ', action)
       const response = {
         ...state,
         [qid]: {
@@ -33,7 +31,6 @@ export default function questions (state = {}, action) {
           }
         }
       }
-      console.log('RESPONSE: ', response)
       return response
     default:
       return state;

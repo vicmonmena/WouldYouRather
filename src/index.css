@@ -420,13 +420,14 @@ a {
   background-color: white;
   margin: 10px;
   font-weight: bold;
+  opacity: 0.5;
 }
 
-.mostVotedOption {
+.myVotedOption {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 2px solid #FFD90F;
+  border: 5px solid #FFD90F;
   border-radius: 3px;
   background-color: white;
   margin: 10px;
@@ -550,7 +551,7 @@ a {
 
 .container-404 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   width: 100%;
 }
@@ -558,4 +559,8 @@ a {
 .container-404 img {
   border: 1px solid rgba(0,0,0,.29);
   margin: 10px;
+}
+
+.container-404 span {
+  font-weight: bold;
 }

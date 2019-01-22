@@ -16,7 +16,6 @@ export default function users (state = {}, action) {
       };
     case ADD_QUESTION :
     {
-      console.log('USERS_REDUCER::ADD_QUESTION::action: ', action)
       const { question } = action
       return  {
         ...state,

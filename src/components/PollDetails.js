@@ -19,16 +19,16 @@ class PollDetails extends Component {
     const totalVotes = optionOneVotes + optionTwoVotes
 
     // Calculating percentages for ProgressBar
-    const optionOnePercentage = optionOneVotes > 0 ? (optionOneVotes * 100 / totalVotes).toFixed(1) : 0
-    const optionTwoPercentage = optionTwoVotes > 0 ? (optionTwoVotes * 100 / totalVotes).toFixed(1) : 0
+    const optionOnePercentage = Number(optionOneVotes > 0 ? (optionOneVotes * 100 / totalVotes).toFixed(1) : 0)
+    const optionTwoPercentage = Number(optionTwoVotes > 0 ? (optionTwoVotes * 100 / totalVotes).toFixed(1) : 0)
     
     // Calculating what question autheduser voted to set the className
     let optionOneClassName = 'optionResults'
     let optionTwoClassName = 'optionResults'
     if (question.optionOne.votes.indexOf(author.id) !== -1) {
-      optionOneClassName = 'mostVotedOption'
+      optionOneClassName = 'myVotedOption'
     } else {
-      optionTwoClassName = 'mostVotedOption'
+      optionTwoClassName = 'myVotedOption'
     }
 
     return (

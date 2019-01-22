@@ -26,13 +26,11 @@ class Home extends Component {
     event.currentTarget.className += " active";
   }
   render() {
-    const { unAnsweredQuestions, answeredQuestions, users, authedUser } = this.props
+    const { unAnsweredQuestions, answeredQuestions, users } = this.props
     
-    console.log('home::render::authedUser: ', authedUser)
     // TODO: Whenever the user types something in the address bar, the user is asked to log in before the requested page is shown.
-
-    if (!(authedUser)) return (<div>Loading...</div>)
-    return(
+  
+    return (
       <div className='home-container'>
         <div className='tab'>
           <button id="defaultOpen" className='tablinks' onClick={(e) => this.handleClickTab(e, 'unanswered')}>Unanswered questions</button>
@@ -64,7 +62,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ questions, users, authedUser }) => {
-  console.log('home::mapStateToProps::authedUser: ', authedUser)
   return(
     {
       unAnsweredQuestions: Object.values(questions).filter((question) => (
@@ -75,9 +72,7 @@ const mapStateToProps = ({ questions, users, authedUser }) => {
         question.optionOne.votes.indexOf(authedUser.id) !== -1 
         || question.optionTwo.votes.indexOf(authedUser.id) !== -1 
       )).sort((questA,questB) => questB.timestamp - questA.timestamp),
-      users: Object.values(users),
-      authedUser: authedUser,
-      loading: authedUser === null
+      users: Object.values(users)
     }
   )
 }

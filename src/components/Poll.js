@@ -8,9 +8,6 @@ class Poll extends Component {
 
   handleSubmit = (questionId, selectedOption) => {
     const { dispatch, } = this.props
-    console.log('questionId: ', questionId)
-    console.log('selectedOption: ', selectedOption)
-    
     dispatch(handleQuestionAnswer(questionId, selectedOption))
   }
 
@@ -20,8 +17,7 @@ class Poll extends Component {
     
     const answered = 
       question.optionOne.votes.indexOf(authedUser.id) !== -1 
-      || question.optionTwo.votes.indexOf(authedUser.id) !== -1 
-    console.log('Poll::render::Checking if questions was answered: ', answered)
+      || question.optionTwo.votes.indexOf(authedUser.id) !== -1
     
     return (
       <div className='poll-container'>
@@ -42,6 +38,9 @@ class Poll extends Component {
 
 const mapStateToProps = ({ users, questions, authedUser }, props) => {
   const { id } = props.match.params
+  console.log('authedUser: ', authedUser)
+  console.log('questions: ', questions)
+  console.log('id: ', id)
   const question = Object.values(questions).find((q) => (q.id === id))
   return(
     {

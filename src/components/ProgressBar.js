@@ -15,7 +15,7 @@ const ProgressBar = (props) => {
 }
 
 ProgressBar.propTypes = {
-  percentage: PropTypes.string
+  percentage: PropTypes.number
 }
 
 export default ProgressBar

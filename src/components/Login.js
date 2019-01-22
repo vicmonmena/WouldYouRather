@@ -5,43 +5,45 @@ import logo from '../logo.svg';
 import { handleLoginUser } from '../actions/shared'
 
 // TODO: RESOLVE: index.js:1446 Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
+
 class Login extends Component {
 
   state = {
-    toHome: false,
+    redirectToReferrer: false,
     selectedUser: null,
     test: false,
   }
 
   handleChange = (event) => {
     const sUser = event.target.value;
-    console.log('prev::onChange: ', sUser)
     this.setState(() => ({
       selectedUser: sUser,
     }));
-    console.log('handleChange::selectedUser: ', this.state.selectedUser)
   }
 
-  handleSubmit = (event) => {
+  handleSubmitLogin = (event) => {
     event.preventDefault()
-    console.log('handleSubmit::selectedUser: ', this.state.selectedUser)
     if (this.state.selectedUser === undefined || this.state.selectedUser === null) {
       alert('Please, select an user!')
       // TODO: change alert by modal
     } else {
-      this.setState({
-        toHome: true
+      console.log('setting authedUser: ', this.state.selectedUser)
+      this.props.auth.authenticate(() => {
+        this.props.dispatch(handleLoginUser(this.state.selectedUser))
+        this.setState(() => ({
+          redirectToReferrer: true
+        }))
       })
-      this.props.dispatch(handleLoginUser(this.state.selectedUser))
     }
   }
 
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/home' } }
+    const { redirectToReferrer } = this.state
     const { users } = this.props
-    console.log('render::selectedUser: ', this.state.selectedUser)
-    
-    if (this.state.toHome === true) {
-      return <Redirect to='/home' />
+
+    if (redirectToReferrer === true) {
+      return <Redirect to={from} />
     }
 
     return (
@@ -50,7 +52,7 @@ class Login extends Component {
         <div><img src={logo} className='App-logo' alt='logo' /></div>
         <div><p>Please sign in to continue</p></div>
         <div>
-          <form className='login-form' onSubmit={this.handleSubmit}>
+          <form className='login-form' onSubmit={this.handleSubmitLogin}>
             <div>
               <select id='user-select' onChange={this.handleChange} >
                 <option key='no-key' value='Select User' selected disabled >Select User</option>

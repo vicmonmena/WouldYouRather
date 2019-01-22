@@ -34,10 +34,9 @@ class LeaderBoard extends Component {
   }
 }
 
-const mapStateToProps = ({ users, authedUser }) => {
+const mapStateToProps = ({ users }) => {
   return {
     users: Object.values(users),
-    authedUser
   }
 }
 

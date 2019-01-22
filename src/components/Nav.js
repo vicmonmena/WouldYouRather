@@ -7,12 +7,13 @@ class Nav extends Component {
 
   handleLogout = (event) => {
     event.preventDefault()
-    this.props.dispatch(handleLogoutUser())
-    this.props.history.push("/");
+    const { dispatch, auth, history } = this.props
+    dispatch(handleLogoutUser())
+    auth.signout(() => history.push('/'))
   }
 
   render() {
-    const { authedUser } = this.props 
+    const { authedUser, auth } = this.props 
     return (
       <nav className='nav'>
         <div className='nav-item'>
@@ -30,7 +31,7 @@ class Nav extends Component {
             Leader Board
           </NavLink>
         </div>
-        { !(authedUser)
+        { !(auth.isAuthenticated) || !(authedUser)
           ? null
           : <div className='nav-item inactive'>
               <div>Hello,</div>
@@ -43,7 +44,7 @@ class Nav extends Component {
               </div>
             </div>
         }
-        { !(authedUser)
+        { !(auth.isAuthenticated) || !(authedUser)
           ? null 
           : <div className='nav-item'>
               <button onClick={this.handleLogout}>

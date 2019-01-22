@@ -22,6 +22,7 @@ export function handleLoginUser(id) {
     return getLoginData()
       .then(({ users, questions }) => {
         const authedUser = Object.values(users).find((user) => (user.id === id))
+        console.log('action::shared::questions: ', questions)
         dispatch(setAuthedUser(authedUser))
         dispatch(receiveQuestions(questions))
         dispatch(hideLoading())
