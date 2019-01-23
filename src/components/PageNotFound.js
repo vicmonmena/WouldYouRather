@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import pageNotFound from '../images/404.jpeg';
 
@@ -7,7 +8,7 @@ class PageNotFound extends Component{
   componentDidMount() {
     setTimeout(() => {
       console.log('Redirecting to "/" ...')
-      this.props.history.push('/')
+      this.props.history.push(this.props.path)
     }, 
     5000)
   }
@@ -21,4 +22,10 @@ class PageNotFound extends Component{
   }
 }
 
-export default withRouter(PageNotFound)
+const mapStateToProps = ({authedUser}) => {
+  console.log('pagenotfound::mapStateToProps::authedUser: ', authedUser)
+  return {
+    path: (authedUser !== '' && authedUser !== null) ? '/home' : '/'
+  }
+}
+export default withRouter(connect(mapStateToProps)(PageNotFound))
