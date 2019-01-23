@@ -28,11 +28,12 @@ class Login extends Component {
       // TODO: change alert by modal
     } else {
       console.log('setting authedUser: ', this.state.selectedUser)
-      this.props.auth.authenticate(() => {
-        this.props.dispatch(handleLoginUser(this.state.selectedUser))
-        this.setState(() => ({
-          redirectToReferrer: true
-        }))
+      this.props.dispatch(handleLoginUser(this.state.selectedUser)).then(() => {
+        this.props.auth.authenticate(() => {
+          this.setState(() => ({
+            redirectToReferrer: true
+          }))
+        })
       })
     }
   }
