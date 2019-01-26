@@ -12,6 +12,7 @@ class newpoll extends Component {
   }
 
   handleChange = (event) => {
+    // TODO: destructuring better const { value, name } = event.target
     const target = event.target
     const value = target.value
     const name = target.name

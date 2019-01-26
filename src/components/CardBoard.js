@@ -4,6 +4,7 @@ import trophy_1 from '../trophy_yellow.png'
 import trophy_2 from '../trophy_green.png'
 import trophy_3 from '../trophy_purple.png'
 
+// TODO: refactor this component into a stateless component (pure function), because it doesn't utilize lifecycle methods for managing state
 class CardBoard extends Component {
 
   static propTypes = {
@@ -13,6 +14,7 @@ class CardBoard extends Component {
 
   render() {
     const { info, position } = this.props
+    // TODO: move this ternary out of the component (as helper function) and use if-else statement for easy-understanding
     const trophyImg = 
       position === 1 
         ? trophy_1

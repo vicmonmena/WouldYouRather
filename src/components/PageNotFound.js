@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import pageNotFound from '../images/404.jpeg';
 
+// TODO: Some links for refactoring and testing React's components:
+// https://hackernoon.com/refactoring-react-components-7bf7d0a9521b
+// https://8thlight.com/blog/josh-mccormick/2017/08/21/refactoring-react.html
+
+
 class PageNotFound extends Component{
 
   componentDidMount() {

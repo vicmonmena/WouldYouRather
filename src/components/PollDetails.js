@@ -11,6 +11,15 @@ class PollDetails extends Component {
 
   render() {
 
+    /**
+     * TODO: Create often repeated computations as helper functions to reduce repeated code.
+     *   
+     * Here are two resources with an explanation and example:
+     *   
+     * https://teamtreehouse.com/community/what-is-a-helper-function
+     * https://medium.com/@Aenon/javascript-helper-functions-for-implementing-data-structures-a60117c1d17a
+     */  
+
     const { question, author } = this.props
 
     // Calculatin each option votes and total votes

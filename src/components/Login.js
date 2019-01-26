@@ -25,7 +25,7 @@ class Login extends Component {
     event.preventDefault()
     if (this.state.selectedUser === undefined || this.state.selectedUser === null) {
       alert('Please, select an user!')
-      // TODO: change alert by modal
+      // TODO: change alert by button disabled
     } else {
       console.log('setting authedUser: ', this.state.selectedUser)
       this.props.dispatch(handleLoginUser(this.state.selectedUser)).then(() => {
@@ -43,6 +43,7 @@ class Login extends Component {
     const { redirectToReferrer } = this.state
     const { users } = this.props
 
+    // TODO: If a variable evaluates to a boolean, it can be written as: if (redirectToReferrer) { ... }
     if (redirectToReferrer === true) {
       return <Redirect to={from} />
     }

@@ -5,6 +5,7 @@ import { handleLogoutUser } from './../actions/shared'
 import { withRouter } from 'react-router-dom'
 class Nav extends Component {
 
+  // TODO: event.preventDefault is only necessary if the event handler is called from a tag nested within the <form> tag
   handleLogout = (event) => {
     event.preventDefault()
     const { dispatch, auth, history } = this.props
