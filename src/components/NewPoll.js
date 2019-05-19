@@ -12,7 +12,7 @@ class newpoll extends Component {
   }
 
   handleChange = (event) => {
-    // TODO: destructuring better const { value, name } = event.target
+    // TODO: destructuring better const { value, name } = event.target -> check : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
     const target = event.target
     const value = target.value
     const name = target.name
